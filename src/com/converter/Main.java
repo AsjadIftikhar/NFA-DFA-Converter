@@ -19,10 +19,12 @@ public class Main {
         HashMap<String, State> NFA = nfa.NFA_NULL_TO_NFA(allStates);
 
 
-        //Step 3: Convert NDFSA to DFA
+        //Step 3: Convert NFA to DFA
 
         //Step 4: Minimize DFA
 
         //Step 5: Run DFA to get Accept/Reject
+
+        //Step 6: Write DFA onto a File
     }
 }
