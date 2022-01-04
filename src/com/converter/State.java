@@ -1,5 +1,6 @@
 package com.converter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class State {
@@ -7,13 +8,13 @@ public class State {
     private boolean isStart;
     private boolean isFinal;
 
-    private HashMap<String, State> transitions;
+    private HashMap<String, ArrayList<State>> transitions;
 
     public State(String name) {
         this.name = name;
         isStart = false;
         isFinal = false;
-        transitions = new HashMap<String, State>();
+        transitions = new HashMap<String, ArrayList<State>>();
     }
 
     public String getName() {
@@ -40,11 +41,11 @@ public class State {
         isFinal = aFinal;
     }
 
-    public HashMap<String, State> getTransitions() {
+    public HashMap<String, ArrayList<State>> getTransitions() {
         return transitions;
     }
 
-    public void setTransitions(HashMap<String, State> transitions) {
+    public void setTransitions(HashMap<String, ArrayList<State>> transitions) {
         this.transitions = transitions;
     }
 
