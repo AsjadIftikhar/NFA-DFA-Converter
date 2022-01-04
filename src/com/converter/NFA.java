@@ -59,7 +59,7 @@ public class NFA {
         return NFA;
     }
     // 2. A converter which converts nfa to dfa
-    public HashMap<ArrayList<String>, State> NFA_TO_DFA(HashMap<String, State> nfa_from_file) {
+    public HashMap<ArrayList<String>, State> NFA_TO_DFA(HashMap<String, State> NFA) {
 
         //ArrayList comparison
         //X = ['A', 'B'] == Y = ['A', 'B']
