@@ -53,13 +53,13 @@ public class State {
     //Add functions to add single transitions
     //Add stuff here as needed!
 
-    @Override
-    public String toString() {
-        return "State{" +
-                "name='" + name + '\'' +
-                ", isStart=" + isStart +
-                ", isFinal=" + isFinal +
-                ", transitions=" + transitions +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "State{" +
+//                "name='" + name + '\'' +
+//                ", isStart=" + isStart +
+//                ", isFinal=" + isFinal +
+//                ", transitions=" + transitions +
+//                '}';
+//    }
 }

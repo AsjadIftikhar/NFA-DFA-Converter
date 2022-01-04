@@ -40,7 +40,7 @@ public class NFA {
 
         for (String key: s2_transitions.keySet()) {
             ArrayList<State> transition_in_s1 = s1_transitions.get(key);
-            if (transition_in_s1.isEmpty()) {
+            if (transition_in_s1 == null) {
                 s1_transitions.put(key, s2_transitions.get(key));
             }
             else {
