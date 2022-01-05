@@ -38,11 +38,11 @@ public class Main {
 
 
         //Step 3: Convert NFA to DFA
-        DFA dfa = new DFA();
-        dfa.MINIMIZE_DFA(NFA);
+
 
         //Step 4: Minimize DFA
-
+        DFA dfa = new DFA();
+        dfa.MINIMIZE_DFA(NFA);
         //Step 5: Run DFA to get Accept/Reject
 
         //Step 6: Write DFA onto a File
