@@ -1,0 +1,15 @@
+A B C D E F
+D E F
+a  b
+A  B  a
+A  C  b
+B  D  a
+B  E  b
+C  D  a
+C  F  b
+D  D  a
+D  B  b
+E  E  a
+E  F  b
+F  F  a
+F  E  b
