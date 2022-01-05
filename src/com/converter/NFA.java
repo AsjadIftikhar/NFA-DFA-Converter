@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 public class NFA {
 
+    public NFA() {}
+
     private State merge_transitions(State s1, State s2) {
         HashMap<String, ArrayList<State>> s1_transitions = s1.getTransitions();
         HashMap<String, ArrayList<State>> s2_transitions = s2.getTransitions();

@@ -51,6 +51,11 @@ public class State {
 
     //Add functions to merge states
     //Add functions to add single transitions
+    public void addSingleTransition(String symbol, State state) {
+        ArrayList<State> temp = new ArrayList<>();
+        temp.add(state);
+        transitions.put(symbol, temp);
+    }
     //Add stuff here as needed!
 
 //    @Override

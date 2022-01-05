@@ -1,0 +1,9 @@
+DFA Transitions
+A  BC  a
+A  BC  b
+BC  D  a
+BC  EF  b
+EF  EF  a
+EF  EF  b
+D  D  a
+D  BC  b

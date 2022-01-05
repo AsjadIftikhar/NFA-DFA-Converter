@@ -82,6 +82,19 @@ public class FileHandler {
     }
 
     // 2. Write a DFA transition table back to another File in txt format
+    public void writeDFA(HashMap<String, State> DFA) throws IOException {
+       FileWriter fileWriter = new FileWriter("DFA.txt");
+       fileWriter.write("DFA Transitions\n");
+        for (State state: DFA.values()) {
+            HashMap<String, ArrayList<State>> transitions = state.getTransitions();
+            for (String symbol: transitions.keySet()) {
+                fileWriter.write(state.getName() + "  " + transitions.get(symbol).get(0).getName() + "  " + symbol + "\n");
+            }
+        }
 
+        fileWriter.close();
+
+
+    }
 
 }
