@@ -1,14 +1,32 @@
 package com.converter;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
 
+    public static String ArrayToString(ArrayList<String> Array) {
+        StringBuilder result = new StringBuilder();
+        for (String s : Array) {
+            result.append(s);
+        }
+
+        return result.toString();
+    }
+
+    public static ArrayList<String> StringToArray(String input) {
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            result.add(String.valueOf(input.charAt(i)));
+        }
+
+        return result;
+    }
+
+
     public static void main(String[] args) throws IOException {
-	    // The Program Execution Starts from Here
+        // The Program Execution Starts from Here
 
         //Step 1: Read NDFSA-null from File:
         FileHandler fileHandler = new FileHandler("NFA");
@@ -20,6 +38,8 @@ public class Main {
 
 
         //Step 3: Convert NFA to DFA
+        DFA dfa = new DFA();
+        dfa.MINIMIZE_DFA(NFA);
 
         //Step 4: Minimize DFA
 
