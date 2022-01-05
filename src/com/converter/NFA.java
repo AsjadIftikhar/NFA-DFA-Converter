@@ -46,6 +46,7 @@ public class NFA {
             if (transitions.containsKey("@")) {
                 for (State s: transitions.get("@")) {
                     State new_state = merge_transitions(state, s);
+                    new_state.getTransitions().remove("@");
                     NFA.put(key, new_state);
                 }
 
