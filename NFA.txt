@@ -1,6 +1,8 @@
-B C D E
-E
-d + a @
-B  C  +
-C  D  +
-D  E  a
+A B C
+B
+a b
+A  B  a
+A  C  a
+C  C  a
+C  C  b
+C  B  a

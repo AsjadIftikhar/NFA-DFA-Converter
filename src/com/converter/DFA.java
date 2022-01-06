@@ -167,16 +167,19 @@ public class DFA {
         for (String key_name: minimized_DFA.keySet()) {
             ArrayList<String> tokens = Main.StringToArray(key_name);
             for (String state: tokens) {
-                HashMap<String, ArrayList<State>> old_transitions = DFA.get(state).getTransitions();
-                for (String key_transition: old_transitions.keySet()) {
-                    State old_state = old_transitions.get(key_transition).get(0);
-                    for (String new_name: minimized_DFA.keySet()) {
-                        if (new_name.contains(old_state.getName())) {
+                if (DFA.get(state) != null) {
+                    HashMap<String, ArrayList<State>> old_transitions = DFA.get(state).getTransitions();
+                    for (String key_transition: old_transitions.keySet()) {
+                        State old_state = old_transitions.get(key_transition).get(0);
+                        for (String new_name: minimized_DFA.keySet()) {
+                            if (new_name.contains(old_state.getName())) {
 
-                            minimized_DFA.get(key_name).addSingleTransition(key_transition, minimized_DFA.get(new_name));
+                                minimized_DFA.get(key_name).addSingleTransition(key_transition, minimized_DFA.get(new_name));
+                            }
                         }
                     }
                 }
+
             }
         }
 
