@@ -12,11 +12,7 @@ public class DFA {
 
     private boolean is_in_same_group(ArrayList<ArrayList<State>> all_groups, State state1, State state2) {
         for (ArrayList<State> states : all_groups) {
-            if (states.contains(state1) ^ states.contains(state2)) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(states.contains(state1) ^ states.contains(state2));
         }
         return true;
     }

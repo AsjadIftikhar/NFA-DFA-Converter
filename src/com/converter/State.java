@@ -64,15 +64,4 @@ public class State {
             transitions.put(symbol, temp);
         }
     }
-    //Add stuff here as needed!
-
-//    @Override
-//    public String toString() {
-//        return "State{" +
-//                "name='" + name + '\'' +
-//                ", isStart=" + isStart +
-//                ", isFinal=" + isFinal +
-//                ", transitions=" + transitions +
-//                '}';
-//    }
 }

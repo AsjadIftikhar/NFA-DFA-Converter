@@ -28,8 +28,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // The Program Execution Starts from Here
 
+        //Parameters:
+
+        String fileName = "NFA";
+        String input_string_for_dfa = "aabb";
+
         //Step 1: Read NDFSA-null from File:
-        FileHandler fileHandler = new FileHandler("NFA3");
+        FileHandler fileHandler = new FileHandler(fileName);
         HashMap<String, State> allStates = fileHandler.readNFA();
 
         //Step 2: Convert NDFSA-null to NDFSA:
@@ -45,7 +50,7 @@ public class Main {
         HashMap<String, State> DFA = dfa.MINIMIZE_DFA(nfa_DFA);
 
         //Step 5: Run DFA to get Accept/Reject
-        if (dfa.EXECUTE_ON_DFA(DFA, "abababbabbababababab")) {
+        if (dfa.EXECUTE_ON_DFA(DFA, input_string_for_dfa)) {
             System.out.println("Accepted");
         }
         else {
