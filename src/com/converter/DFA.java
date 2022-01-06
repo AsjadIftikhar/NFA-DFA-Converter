@@ -144,12 +144,15 @@ public class DFA {
         //Step 3: make a DFA from groups
         HashMap<String, State> minimized_DFA = new HashMap<>();
         for (ArrayList<State> group: all_groups) {
-            StringBuilder name = new StringBuilder();
+            String name = "";
             boolean isStart = false;
             boolean isFinal = false;
 
             for (State state: group) {
-                name.append(state.getName());
+                if (state.getName().contains(name)) {
+                    name = state.getName();
+                }
+
                 if (state.isStart()){
                     isStart = true;
                 }

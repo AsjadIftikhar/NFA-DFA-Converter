@@ -29,7 +29,7 @@ public class Main {
         // The Program Execution Starts from Here
 
         //Step 1: Read NDFSA-null from File:
-        FileHandler fileHandler = new FileHandler("NFA");
+        FileHandler fileHandler = new FileHandler("NFA3");
         HashMap<String, State> allStates = fileHandler.readNFA();
 
         //Step 2: Convert NDFSA-null to NDFSA:
@@ -45,7 +45,7 @@ public class Main {
         HashMap<String, State> DFA = dfa.MINIMIZE_DFA(nfa_DFA);
 
         //Step 5: Run DFA to get Accept/Reject
-        if (dfa.EXECUTE_ON_DFA(DFA, "++a")) {
+        if (dfa.EXECUTE_ON_DFA(DFA, "abababbabbababababab")) {
             System.out.println("Accepted");
         }
         else {

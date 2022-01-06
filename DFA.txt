@@ -1,5 +1,7 @@
 DFA Transitions
-BC  BC  a
-BC  AC  b
-AC  BC  a
-AC  AC  b
+AD  ABCD  a
+AD  ABCD  b
+ABD  ABCD  a
+ABD  ABCD  b
+ABCD  ABCD  a
+ABCD  ABCD  b

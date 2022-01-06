@@ -165,21 +165,20 @@ public class NFA {
 //        return DFA;
 //    }
 
-    // 2. A converter which converts nfa to dfa
     public HashMap<String, State> NFA_TO_DFA(HashMap<String, State> NFA) {
 
         HashMap<String, State> DFA = new HashMap<String, State>();
         Queue<String> pq = new PriorityQueue<>();
         State startState = null;
-        for (String key : NFA.keySet()) {
-            if (NFA.get(key).isStart())
+        for (String key: NFA.keySet()) {
+            if(NFA.get(key).isStart())
                 startState = NFA.get(key);
         }
         pq.add(startState.getName());
-        while (!pq.isEmpty()) {
+        while(!pq.isEmpty()) {
             String element = pq.remove();
-            if (!DFA.containsKey(element)) {
-                if (NFA.get(element) == null) {  // if it's a combined state, make it a new state object and add in DFA
+            if(!DFA.containsKey(element)){
+                if(NFA.get(element) == null){  // if it's a combined state, make it a new state object and add in DFA
                     NFA.put(element, new State(element));
                     // convert string to `char[]` array
                     char[] chars = element.toCharArray();
@@ -187,28 +186,31 @@ public class NFA {
                     int count = 0;
                     // iterate over `char[]` array using enhanced for-loop
                     // if one of the characters is of a final state, then the combined state is final too
-                    for (char ch : chars) {
-                        if (NFA.get(Character.toString(ch)).isFinal()) {
+                    for (char ch: chars) {
+                        if(NFA.get(Character.toString(ch)).isFinal()){
                             NFA.get(element).setFinal(true);
                         }
                         count++;
-                        if (count == 1) {
+                        if(count == 1) {
 
-                            for (String tkey : NFA.get(Character.toString(ch)).getTransitions().keySet()) {
+                            for(String tkey: NFA.get(Character.toString(ch)).getTransitions().keySet()){
                                 ArrayList<State> tempStates = new ArrayList<State>();
                                 tempStates.addAll(NFA.get(Character.toString(ch)).getTransitions().get(tkey));
-                                NFA.get(element).getTransitions().put(tkey, tempStates);
+                                NFA.get(element).getTransitions().put(tkey,tempStates);
 
                             }
 
-                        } else {
-                            for (String tkey : NFA.get(Character.toString(ch)).getTransitions().keySet()) {
-                                for (State s : NFA.get(Character.toString(ch)).getTransitions().get(tkey)) {
-                                    if (NFA.get(element).getTransitions().get(tkey) == null) {
+                        }
+                        else{
+                            for(String tkey: NFA.get(Character.toString(ch)).getTransitions().keySet()){
+                                for(State s: NFA.get(Character.toString(ch)).getTransitions().get(tkey)) {
+                                    if(NFA.get(element).getTransitions().get(tkey) == null)
+                                    {
                                         ArrayList<State> tempStates = new ArrayList<State>();
                                         tempStates.addAll(NFA.get(Character.toString(ch)).getTransitions().get(tkey));
-                                        NFA.get(element).getTransitions().put(tkey, tempStates);
-                                    } else {
+                                        NFA.get(element).getTransitions().put(tkey,tempStates);
+                                    }
+                                    else {
                                         if (!NFA.get(element).getTransitions().get(tkey).contains(s)) {
                                             NFA.get(element).getTransitions().get(tkey).add(s);
                                         }
@@ -220,15 +222,17 @@ public class NFA {
 
                     }
 
-                    for (String key : NFA.get(element).getTransitions().keySet()) {
+                    for (String key: NFA.get(element).getTransitions().keySet()) {
                         ArrayList<State> transitions = NFA.get(element).getTransitions().get(key);
                         String appendedstates = "";
-                        if (NFA.get(element).getTransitions().get(key).size() > 1) {
+                        if(NFA.get(element).getTransitions().get(key).size() > 1) {
                             for (int i = 0; i < transitions.size(); i++) {
-                                appendedstates = appendedstates.concat(transitions.get(i).getName());
-                                char charArray[] = appendedstates.toCharArray();
-                                Arrays.sort(charArray);
-                                appendedstates = String.valueOf(charArray);
+                                if(!appendedstates.contains(transitions.get(i).getName())) {
+                                    appendedstates = appendedstates.concat(transitions.get(i).getName());
+                                    char charArray[] = appendedstates.toCharArray();
+                                    Arrays.sort(charArray);
+                                    appendedstates = String.valueOf(charArray);
+                                }
 
                             }
                             pq.add(appendedstates);
@@ -239,18 +243,19 @@ public class NFA {
 
 
                 }
-                DFA.put(element, NFA.get(element));
+                DFA.put(element,NFA.get(element));
                 HashMap<String, ArrayList<State>> transitions = NFA.get(element).getTransitions();
-                if (transitions.size() > 0) {  //check for null
+                if(transitions.size() > 0) {  //check for null
                     for (String tkey : transitions.keySet()) {
                         String appendedStates = "";
 
                         for (State elementState : transitions.get(tkey)) {
-
-                            appendedStates = appendedStates.concat(elementState.getName());
-                            char charArray[] = appendedStates.toCharArray();
-                            Arrays.sort(charArray);
-                            appendedStates = String.valueOf(charArray);
+                            if(!appendedStates.contains(elementState.getName())) {
+                                appendedStates = appendedStates.concat(elementState.getName());
+                                char charArray[] = appendedStates.toCharArray();
+                                Arrays.sort(charArray);
+                                appendedStates = String.valueOf(charArray);
+                            }
 
                         }
                         pq.add(appendedStates);
@@ -262,16 +267,18 @@ public class NFA {
         }
 
 
-        for (String key : DFA.keySet()) {
-            for (String tkey : DFA.get(key).getTransitions().keySet()) {
+        for (String key: DFA.keySet()) {
+            for (String tkey: DFA.get(key).getTransitions().keySet()) {
                 ArrayList<State> transitions = DFA.get(key).getTransitions().get(tkey);
                 String appendedstates = "";
                 if (DFA.get(key).getTransitions().get(tkey).size() > 1) {
                     for (int i = 0; i < transitions.size(); i++) {
-                        appendedstates = appendedstates.concat(transitions.get(i).getName());
-                        char charArray[] = appendedstates.toCharArray();
-                        Arrays.sort(charArray);
-                        appendedstates = String.valueOf(charArray);
+                        if(!appendedstates.contains(transitions.get(i).getName())) {
+                            appendedstates = appendedstates.concat(transitions.get(i).getName());
+                            char charArray[] = appendedstates.toCharArray();
+                            Arrays.sort(charArray);
+                            appendedstates = String.valueOf(charArray);
+                        }
 
                     }
                     ArrayList<State> tempStates = new ArrayList<State>();
