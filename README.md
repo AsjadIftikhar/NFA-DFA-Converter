@@ -47,7 +47,7 @@ Replace src folder
 Step 3.
 
 ```sh
-Place the source code with .cc extension in the same folder as src
+Place the source NFA file with correct format in the same folder as src
 ```
 
 Step 4.
