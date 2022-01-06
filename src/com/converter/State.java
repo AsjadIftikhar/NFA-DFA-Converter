@@ -56,6 +56,14 @@ public class State {
         temp.add(state);
         transitions.put(symbol, temp);
     }
+    public void addTransition(String symbol, State state) {
+        ArrayList <State> temp = transitions.get(symbol);
+        if (temp == null) {
+            temp = new ArrayList<>();
+            temp.add(state);
+            transitions.put(symbol, temp);
+        }
+    }
     //Add stuff here as needed!
 
 //    @Override
